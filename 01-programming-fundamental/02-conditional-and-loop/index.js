@@ -1,9 +1,13 @@
-// convert celcius to fahreinheit
+/*
+1. Convert celcius to fahreinheit
+*/
 let celcius = 60
 let fahreinheit = (celcius * 9 / 5) + 32
 console.log(fahreinheit)
 
-// check if number is even or odd
+/*
+2. Check if number is even or odd
+*/
 let n = 2
 if (n % 2 == 0) {
   console.log('Even number')
@@ -11,7 +15,9 @@ if (n % 2 == 0) {
   console.log('Odd number')
 }
 
-// check if number is prime
+/*
+3. Check if number is prime
+*/
 let num = 3
 let prime = true
 
@@ -30,7 +36,9 @@ console.log(
   prime ? `${num} adalah bilangan prima` : `${num} bukan bilangan prima`
 )
 
-// find sum of the number
+/*
+4. Find summary of the number
+*/
 num = 5
 let sum = 0
 
@@ -40,7 +48,9 @@ for (let i = 1; i <= num; i++) {
 
 console.log(sum)
 
-// find factorial of the number
+/*
+5. Find factorial of the number
+*/
 num = 6
 let factorial = 1
 
@@ -50,16 +60,18 @@ for (let i = 1; i <= num; i++) {
 
 console.log(factorial)
 
-// find fibonacci
+/*
+6. Find first N fibonacci numbers
+*/
 num = 10
-let x = 0
-let y = 1
-let result = 0
+let temp1 = 0
+let temp2 = 1
+let calc = 0
 
 for (let i = 2; i <= num; i++) {
-  result = x + y
-  x = y
-  y = result
+  calc = temp1 + temp2
+  temp1 = temp2
+  temp2 = result
 }
 
-console.log(y)
+console.log(temp2)
