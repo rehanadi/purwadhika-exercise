@@ -18,7 +18,6 @@ function triangleHeight(height = 0) {
 console.log(triangleHeight(5))
 
 // 2. Create a function that can loop the number of times according to the input we provide, and will replace multiples of 3 with "Fizz", multiples of 5 with "Buzz", multiples of 3 and 5 with "FizzBuzz"
-
 function fizzBuzz(number = 0) {
   let result = ''
   
