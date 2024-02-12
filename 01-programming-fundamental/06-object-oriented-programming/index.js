@@ -46,6 +46,11 @@ console.log(calculateStudents(students))
 class Product {
   name
   price
+
+  constructor() {
+    this.name
+    this.price
+  }
 }
 
 class Transaction extends Product {
@@ -76,7 +81,7 @@ class Transaction extends Product {
 
   checkout() {
     return {
-      total: this.total,
+      total: this.showTotal(),
       products: this.products
     }
   }
