@@ -43,6 +43,15 @@ console.log(calculateStudents(students))
 
 // 2. Create a program to create transaction
 
+function formatAmount(amount) {
+  return amount.toLocaleString('in-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    maximumFractionDigits: 0, 
+    minimumFractionDigits: 0, 
+  })
+}
+
 class Product {
   name
   price
@@ -68,20 +77,21 @@ class Transaction {
   }
 
   showTotal() {
-    return this.total
+    console.log(`Total: ${formatAmount(this.total)}`)
   }
 
   checkout() {
-    return {
-      total: this.total, 
-      products: this.products 
-    }
+    this.products.forEach(product => {
+      console.log(`${product.name}: ${product.qty} x ${formatAmount(product.price)}`)
+    })
+
+    this.showTotal()
   }
 }
 
-const productAdidas = new Product('Adidas', 10000)
-const productNike = new Product('Nike', 20000)
-const productRebook = new Product('Rebook', 30000)
+const productAdidas = new Product('Adidas', 100000)
+const productNike = new Product('Nike', 200000)
+const productRebook = new Product('Rebook', 300000)
 
 const transaction = new Transaction()
 
@@ -89,5 +99,5 @@ transaction.addToCart(productAdidas, 2)
 transaction.addToCart(productNike, 3)
 transaction.addToCart(productRebook, 4)
 
-console.log(transaction.showTotal())
-console.log(transaction.checkout())
+transaction.showTotal()
+transaction.checkout()
