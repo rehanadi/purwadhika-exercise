@@ -65,7 +65,8 @@ console.log(splitWords(text1))
 
 function calculateNumbers(numbers1 = [], numbers2 = []) {
   if (numbers1.length !== numbers2.length) return []
-  return numbers1.map((number1, index) => number1 + numbers2[index])
+  const result = numbers1.map((number1, index) => number1 + numbers2[index])
+  return result
 }
 
 let num1 = [1, 2, 3]
@@ -150,10 +151,10 @@ console.log(findDifference(numbers7, numbers8))
 // 11. Based on the array below write a function that will return primitive data types only
 
 function primitive(arr = []) {
-  return arr.filter(item => typeof item !== 'object')
+  return arr.filter(item => typeof item !== 'object' || item === null)
 }
 
-let list = [1, [], undefined, {}, "string", {}, []]
+let list = [1, [], undefined, {}, "string", {}, [], null]
 
 console.log(primitive(list))
 
@@ -161,7 +162,6 @@ console.log(primitive(list))
 
 function secondSmallest(numbers = []) {
   const sort = numbers.sort((a, b) => a - b)
-  
   return sort[1]
 }
 
@@ -196,7 +196,7 @@ console.log(sumDuplicate(numbers10))
 
 // 15. Write a game of rock, paper, scissor function that will return 'Win' or 'Lose'. The function will randomly pick between rock, paper, or scissor
 
-function game(selection = '') {
+function game(selection) {
   const answers = ['paper', 'rock', 'scissor']
   const answer = answers[Math.floor(Math.random() * answers.length)]
   const win = (selection === 'paper' && answer === 'rock') ||
@@ -204,7 +204,7 @@ function game(selection = '') {
               (selection === 'scissor' && answer === 'paper')
   const draw = selection === answer
 
-  return win ? 'Win' : (draw ? 'Draw' : 'Lose')  
+  return ('Answer is ' + answer + ', you ') + (win ? 'win' : (draw ? 'draw' : 'lose'))
 }
 
 console.log(game('rock'))
