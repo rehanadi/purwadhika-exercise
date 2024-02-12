@@ -43,63 +43,61 @@ console.log(calculateStudents(students))
 
 // 2. Create a program to create transaction
 
-function formatAmount(amount) {
-  return amount.toLocaleString('in-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    maximumFractionDigits: 0, 
-    minimumFractionDigits: 0, 
-  })
-}
-
 class Product {
   name
   price
-
-  constructor(name, price) {
-    this.name = name
-    this.price = price
-  }
 }
 
-class Transaction {
+class Transaction extends Product {
   products
   total
+  qty
   
   constructor() {
+    super()
     this.products = []
     this.total = 0
+    this.qty = 0
   }
 
-  addToCart(product, qty) {
-    this.products.push({ ...product, qty })
-    this.total += product.price * qty
+  addToCart() {
+    this.products.push({
+      name: this.name,
+      price: this.price,
+      qty: this.qty
+    })
+
+    this.total += this.price * this.qty
   }
 
   showTotal() {
-    console.log(`Total: ${formatAmount(this.total)}`)
+    return this.total
   }
 
   checkout() {
-    console.log('=== Checkout ===')
-
-    this.products.forEach(product => {
-      console.log(`${product.name}: ${product.qty} x ${formatAmount(product.price)}`)
-    })
-
-    this.showTotal()
+    return {
+      total: this.total,
+      products: this.products
+    }
   }
 }
 
-const productAdidas = new Product('Adidas', 100000)
-const productNike = new Product('Nike', 200000)
-const productRebook = new Product('Rebook', 300000)
-
 const transaction = new Transaction()
 
-transaction.addToCart(productAdidas, 2)
-transaction.addToCart(productNike, 3)
-transaction.addToCart(productRebook, 4)
+transaction.name = 'Adidas'
+transaction.price = 100000
+transaction.qty = 2
+transaction.addToCart()
 
-transaction.showTotal()
-transaction.checkout()
+transaction.name = 'Nike'
+transaction.price = 200000
+transaction.qty = 3
+transaction.addToCart()
+
+transaction.name = 'Rebook'
+transaction.price = 300000
+transaction.qty = 4
+transaction.addToCart()
+
+console.log(transaction.showTotal())
+console.log(transaction.checkout()) 
