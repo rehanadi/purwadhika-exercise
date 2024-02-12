@@ -196,14 +196,15 @@ console.log(sumDuplicate(numbers10))
 
 // 15. Write a game of rock, paper, scissor function that will return 'Win' or 'Lose'. The function will randomly pick between rock, paper, or scissor
 
-function game(param = '') {
-  const answer = 'paper'
-  const win = 
-    (param === 'paper' && answer === 'rock') ||
-    (param === 'rock' && answer === 'scissor') ||
-    (param === 'scissor' && answer === 'paper')
+function game(selection = '') {
+  const answers = ['paper', 'rock', 'scissor']
+  const answer = answers[Math.floor(Math.random() * answers.length)]
+  const win = (selection === 'paper' && answer === 'rock') ||
+              (selection === 'rock' && answer === 'scissor') ||
+              (selection === 'scissor' && answer === 'paper')
+  const draw = selection === answer
 
-  return win ? 'Win' : (param === answer ? 'Draw' : 'Lose')  
+  return win ? 'Win' : (draw ? 'Draw' : 'Lose')  
 }
 
 console.log(game('rock'))

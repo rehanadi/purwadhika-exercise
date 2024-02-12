@@ -47,24 +47,24 @@ class Product {
   name
   price
 
-  setProduct(name, price) {
+  constructor(name, price) {
     this.name = name
     this.price = price
   }
 }
 
-class Transaction extends Product {
+class Transaction {
+  products
   total
-  qty
   
   constructor() {
-    super()
+    this.products = []
+    this.total = 0
   }
 
-  addToCart(name, price, qty) {
-    this.setProduct(name, price)
-    this.qty = qty
-    this.total = this.price * this.qty
+  addToCart(product, qty) {
+    this.products.push({ ...product, qty })
+    this.total += product.price * qty
   }
 
   showTotal() {
@@ -73,16 +73,21 @@ class Transaction extends Product {
 
   checkout() {
     return {
-      name: this.name,
-      price: this.price,
-      qty: this.qty,
-      total: this.total
+      total: this.total, 
+      products: this.products 
     }
   }
 }
 
+const productAdidas = new Product('Adidas', 10000)
+const productNike = new Product('Nike', 20000)
+const productRebook = new Product('Rebook', 30000)
+
 const transaction = new Transaction()
 
-transaction.addToCart('Adidas', 10000, 2)
+transaction.addToCart(productAdidas, 2)
+transaction.addToCart(productNike, 3)
+transaction.addToCart(productRebook, 4)
+
 console.log(transaction.showTotal())
 console.log(transaction.checkout())
