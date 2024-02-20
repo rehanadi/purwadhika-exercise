@@ -35,7 +35,7 @@ class ShootingGame {
             this.player2.showStatus();
 
             if ( this.player2.health <= 0 ) {
-                console.log(`${this.player1} Win`);
+                console.log(`${this.player1.name} Win`);
                 break;
             }
 
@@ -55,7 +55,7 @@ class ShootingGame {
             this.player2.showStatus();
 
             if ( this.player1.health <= 0 ) {
-                console.log(`${this.player2} Win`);
+                console.log(`${this.player2.name} Win`);
                 break;
             }
         }
