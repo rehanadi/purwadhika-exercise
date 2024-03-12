@@ -71,7 +71,7 @@ console.log(romanToNumber(str))
 function pascalTriangle(numRows = 1) {
   let result = []
 
-  for (let i = 0; i < numRows; i++) {
+  for (let i = 0; i <= numRows; i++) {
     const temp = []
 
     for (let j = 0; j < i; j++) {
